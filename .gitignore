@@ -2,3 +2,5 @@
 myblog-common/myblog-common.iml
 myblog-web/myblog-web.iml
 myblog.iml
+myblog-common/target/
+myblog-web/target/
