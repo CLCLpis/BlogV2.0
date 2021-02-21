@@ -126,8 +126,15 @@
                     </configuration>
                     <executions>
                         <execution>
-                            <id>build-and-push-docker-image</id>
+                            <id>build-docker-image</id>
                             <phase>package</phase>
+                            <goals>
+                                <goal>dockerBuild</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>build-and-push-docker-image</id>
+                            <phase>install</phase>
                             <goals>
                                 <goal>build</goal>
                             </goals>
