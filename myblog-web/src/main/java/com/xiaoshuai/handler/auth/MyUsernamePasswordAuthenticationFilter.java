@@ -1,6 +1,7 @@
 package com.xiaoshuai.handler.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xiaoshuai.handler.BusinessException;
 import com.xiaoshuai.service.UserService;
 import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,7 +72,8 @@ public class MyUsernamePasswordAuthenticationFilter  extends UsernamePasswordAut
         }
             throw new MyAuthenticationException("用户或者密码错误");
     }
-        return  this.attemptAuthentication(request,response);
+        //return  this.attemptAuthentication(request,response);
+    throw new BusinessException("请求方式错误");
  }
 
 
