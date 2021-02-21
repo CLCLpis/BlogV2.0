@@ -8,6 +8,7 @@ spring:
    password: Wjxg_123
    type: com.alibaba.druid.pool.DruidDataSource
 
+
   #邮箱配置
   mail:
     host: smtp.163.com
@@ -43,6 +44,8 @@ mybatis-plus:
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
 server:
   port: 8090
+  servlet:
+    context-path: /blog
 
 #邮箱配置
 alioss:
