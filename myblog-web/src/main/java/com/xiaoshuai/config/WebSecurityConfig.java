@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -33,6 +34,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private MyAuthenticationEntryPoint myAuthenticationEntryPoint;
     @Autowired
     private MyAccessDeniedHandler myAccessDeniedHandler;
+
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        //不走Spring SEcurity的过滤器链，也就意味着不会将用户的信息记录在session中,因此尽量不要用这种方式进行资源放行
+//        //关闭springsecurity服务
+//        web.ignoring().antMatchers("/**");
+//    }
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
        //        什么是（cors 预检请求） 就是你要跨域请求得时候 你要预先发一个请求看对面是拦你还是放你
