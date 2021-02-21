@@ -4,7 +4,9 @@ import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.model.CannedAccessControlList;
 import com.aliyun.oss.model.ObjectMetadata;
+import com.xiaoshuai.handler.BusinessException;
 import com.xiaoshuai.service.AliOssService;
+import com.xiaoshuai.utils.ObsUploadUtil;
 import com.xiaoshuai.utils.OssUtil;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -156,6 +158,15 @@ public class AliOssServiceImpl implements AliOssService, InitializingBean {
 
 // 关闭OSSClient。
         ossClient.shutdown();
+    }
+
+    @Override
+    public String uploadHwCloud(MultipartFile file) {
+        try{
+            return ObsUploadUtil.obsUpload(file);
+        }catch (Exception e){
+            throw new BusinessException(e.getMessage());
+        }
     }
 
     /*** Description: 判断OSS服务文件上传时文件的contentType ** @param FilenameExtension 文件后缀 * @return String */

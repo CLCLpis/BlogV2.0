@@ -39,4 +39,11 @@ public interface AliOssService {
      * 删除文件
      */
     void deleteFile(String filename);
+
+    /**
+     * huaweiyun
+     * @param file file
+     * @return filename
+     */
+    String uploadHwCloud(MultipartFile file);
 }

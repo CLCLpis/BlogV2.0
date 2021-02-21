@@ -24,7 +24,7 @@ public class AliOssController {
     @PostMapping("/uploadImage")
     @ApiOperation(value = "图片上传")
     public Result upload(MultipartFile file){
-        String url = aliOssService.upload(file);
+        String url = aliOssService.uploadHwCloud(file);
         return  Result.ok().data("url", url);
     }
 }
