@@ -13,7 +13,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.CorsUtils;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 /**
  * @author 傅帅  QQ:1766281636
@@ -67,6 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          http.addFilterAt(myUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         //第6步：处理异常情况：认证失败和权限不足
          http.exceptionHandling().authenticationEntryPoint(myAuthenticationEntryPoint).accessDeniedHandler(myAccessDeniedHandler);
+        http.cors().configurationSource(corsConfigurationSource());
     }
 
     @Bean
@@ -83,10 +87,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return  new BCryptPasswordEncoder();
     }
 
-    //用户密码加密验证
+    /**
+     * 用户密码加密验证
+     * @param auth auth
+     * @throws Exception Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
      auth.userDetailsService( myUserDetailsService).passwordEncoder(passwordEncoder());
     }
-    
+
+    /**
+     * 配置跨域访问资源
+     * @return source
+     */
+    private CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        // 同源配置，*表示任何请求都视为同源，若需指定ip和端口可以改为如“localhost：8080”，多个以“，”分隔；
+        corsConfiguration.addAllowedOrigin("http://localhost:8080");
+        // header，允许哪些header
+        corsConfiguration.addAllowedHeader("*");
+        // 允许的请求方法，PSOT、GET等
+        corsConfiguration.addAllowedMethod("*");
+        // 配置允许跨域访问的url
+        corsConfiguration.setAllowCredentials(true);
+        source.registerCorsConfiguration("/**", corsConfiguration);
+        return source;
+    }
 }
