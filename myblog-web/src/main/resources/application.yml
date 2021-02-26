@@ -3,7 +3,7 @@ spring:
     name: myblog-web
   datasource:
    driver-class-name: com.mysql.cj.jdbc.Driver
-   url: jdbc:mysql://106.55.61.15:3306/blog?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+   url: jdbc:mysql://106.55.61.15:3306/bear?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
    username: root
    password: Wjxg_123
    type: com.alibaba.druid.pool.DruidDataSource
