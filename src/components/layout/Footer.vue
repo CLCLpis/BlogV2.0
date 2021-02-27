@@ -3,7 +3,7 @@
     <v-col class="text-center footer" cols="12">
       <div>Copyright &copy; 2021-{{ new Date().getFullYear() }}</div>
       <a href="https://beian.miit.gov.cn" target="_blank">
-        	粤ICP备2021015885号-1</a
+        	粤ICP备2021015885号</a
       >
     </v-col>
   </v-footer>
