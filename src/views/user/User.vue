@@ -17,7 +17,7 @@
           <avatar-cropper
             @uploaded="uploadAvatar"
             trigger="#pick-avatar"
-            upload-url="/api/users/avatar"
+            upload-url="https://web.bear0901.cn:32443/blog/users/avatar"
           />
         </v-col>
         <v-col md="7" cols="12">
