@@ -104,7 +104,7 @@
   color: #666;
   font-size: 1.25rem;
 }
-  ..echarts {
+  .echarts {
     width: 100%;
     height: 100%;
   }
