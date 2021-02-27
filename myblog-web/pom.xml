@@ -108,7 +108,7 @@
                         <to>
                             <image>registry.cn-hangzhou.aliyuncs.com/pisbear/bear_blog</image>
                             <tags>
-                                <tag>latest.prod</tag>
+                                <tag>latest.v1.prod</tag>
                             </tags>
                         </to>
                         <container>
