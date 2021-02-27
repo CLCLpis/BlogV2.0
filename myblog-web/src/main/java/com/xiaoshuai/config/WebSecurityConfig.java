@@ -106,7 +106,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         // 同源配置，*表示任何请求都视为同源，若需指定ip和端口可以改为如“localhost：8080”，多个以“，”分隔；
         corsConfiguration.addAllowedOrigin("http://106.55.61.15:8080");
-        corsConfiguration.addAllowedOrigin("http://106.55.61.15:80");
+        corsConfiguration.addAllowedOrigin("http://106.55.61.15");
         // header，允许哪些header
         corsConfiguration.addAllowedHeader("*");
         // 允许的请求方法，PSOT、GET等
