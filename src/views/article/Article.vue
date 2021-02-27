@@ -177,7 +177,7 @@ export default {
     getArticle() {
       const that = this;
       //查询文章
-      this.axios.get("/api" + this.$route.path).then(({ data }) => {
+      this.axios.get(this.GLOBAL.host + this.$route.path).then(({ data }) => {
         //将markdown转换为Html
         this.markdownToHtml(data.data.data);
         this.$nextTick(() => {
@@ -207,7 +207,7 @@ export default {
       const arr = path.split("/");
       const articleId = arr[arr.length - 1];
       this.axios
-        .get("/api/comment/comments", {
+        .get(this.GLOBAL.host+"/comment/comments", {
           params: { current: 1, articleId: articleId }
         })
         .then(({ data }) => {
@@ -224,7 +224,7 @@ export default {
       //发送请求
       let param = new URLSearchParams();
       param.append("articleId", this.article.id);
-      this.axios.post("/api/articles/like", param).then(({ data }) => {
+      this.axios.post(this.GLOBAL.host+"/articles/like", param).then(({ data }) => {
         if (data.flag) {
           //判断是否点赞
           if (this.$store.state.articleLikeSet.indexOf(this.article.id) != -1) {

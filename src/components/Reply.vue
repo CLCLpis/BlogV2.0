@@ -77,7 +77,7 @@ export default {
         commentContent: this.commentContent
       };
       this.commentContent = "";
-      this.axios.post("/api/comment/comments", comment).then(({ data }) => {
+      this.axios.post(this.GLOBAL.host+"/comment/comments", comment).then(({ data }) => {
         if (data.success) {
           this.$emit("reloadReply", this.index);
           this.$toast({ type: "success", message: "回复成功" });

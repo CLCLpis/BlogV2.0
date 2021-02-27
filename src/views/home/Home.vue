@@ -245,14 +245,14 @@ export default {
       this.time = str;
     },
     getBlogInfo() {
-      this.axios.get("/api/blogInfo/getBlogInfo").then(({ data }) => {
+      this.axios.get(this.GLOBAL.host+"/blogInfo/getBlogInfo").then(({ data }) => {
         this.blogInfo = data.data.data;
         this.$store.commit("checkBlogInfo", data.data.data);
       });
     },
     infiniteHandler($state){
       this.axios
-        .get("/api/article/articles", {
+        .get(this.GLOBAL.host+"/article/articles", {
           params: {
             current: this.current
           }

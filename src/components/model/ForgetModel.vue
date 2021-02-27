@@ -82,7 +82,7 @@ export default {
           //发送邮件
           that.countDown();
           that.axios
-            .get("/api/users/code", {
+            .get(this.GLOBAL.host+"/users/code", {
               params: { username: that.username }
             })
             .then(({ data }) => {
@@ -129,7 +129,7 @@ export default {
         password: this.password,
         code: this.code
       };
-      this.axios.put("/api/users/password", user).then(({ data }) => {
+      this.axios.put(this.GLOBAL.host+"/users/password", user).then(({ data }) => {
         if (data.flag) {
           this.$toast({ type: "success", message: data.message });
         } else {

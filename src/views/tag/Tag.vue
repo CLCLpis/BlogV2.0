@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     listTags() {
-      this.axios.get("/api/tag/tags").then(({ data }) => {
+      this.axios.get(this.GLOBAL.host+"/tag/tags").then(({ data }) => {
         this.tagList = data.data.data;
         this.count = data.data.count;
       });

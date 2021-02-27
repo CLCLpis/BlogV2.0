@@ -68,11 +68,11 @@ export default {
   },
   methods: {
     listFriendLink() {
-      this.axios.get("/api/friendLink/listLinks").then(({ data }) => {
+      this.axios.get(this.GLOBAL.host+"/friendLink/listLinks").then(({ data }) => {
         this.friendLinkList = data.data.data;
       });
       this.axios
-        .get("/api/comments", {
+        .get(this.GLOBAL.host+"/comments", {
           params: { current: 1 }
         })
         .then(({ data }) => {

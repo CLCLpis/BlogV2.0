@@ -89,7 +89,7 @@ export default {
     infiniteHandler($state) {
       const path = this.$route.path;
       this.axios
-        .get("/api" + path, {
+        .get(this.GLOBAL.host + path, {
           params: {
             current: this.current
           }

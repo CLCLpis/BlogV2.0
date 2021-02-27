@@ -243,7 +243,7 @@ export default {
     },
     checkReplies(index, item) {
       this.axios
-        .get("/api/comment/comments/replies", {
+        .get(this.GLOBAL.host+"/comment/comments/replies", {
           params: { current: 1, commentId: item.id }
         })
         .then(({ data }) => {
@@ -259,7 +259,7 @@ export default {
     changeReplyCurrent(current, index, commentId) {
       //查看下一页回复
       this.axios
-        .get("/api/comment/comments/replies", {
+        .get(this.GLOBAL.host+"/comment/comments/replies", {
           params: { current: current, commentId: commentId }
         })
         .then(({ data }) => {
@@ -272,7 +272,7 @@ export default {
       const path = this.$route.path;
       const arr = path.split("/");
       this.axios
-        .get("/api/comments", {
+        .get(this.GLOBAL.host+"/comments", {
           params: { current: this.current, articleId: arr[2] }
         })
         .then(({ data }) => {
@@ -307,7 +307,7 @@ export default {
         commentContent: this.commentContent
       };
       this.commentContent = "";
-      this.axios.post("/api/comment/comments", comment).then(({ data }) => {
+      this.axios.post(this.GLOBAL.host+"/comment/comments", comment).then(({ data }) => {
         if (data.success) {
           //查询最新评论
           this.$emit("reloadComment");
@@ -326,7 +326,7 @@ export default {
       //发送请求
       let param = new URLSearchParams();
       param.append("commentId", comment.id);
-      this.axios.post("/api/comments/like", param).then(({ data }) => {
+      this.axios.post(this.GLOBAL.host+"/comments/like", param).then(({ data }) => {
         if (data.flag) {
           //判断是否点赞
           if (this.$store.state.commentLikeSet.indexOf(comment.id) != -1) {
@@ -340,7 +340,7 @@ export default {
     },
     reloadReply(index) {
       this.axios
-        .get("/api/comment/comments/replies", {
+        .get(this.GLOBAL.host+"/comment/comments/replies", {
           params: {
             commentId: this.commentList[index].id,
             current: this.$refs.page[index].current

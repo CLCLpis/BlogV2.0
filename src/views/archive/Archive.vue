@@ -52,7 +52,7 @@ export default {
   methods: {
     listArchives() {
       this.axios
-        .get("/api/articles/archives", {
+        .get(this.GLOBAL.host+"/articles/archives", {
           params: { current: this.current }
         })
         .then(({ data }) => {
@@ -64,7 +64,7 @@ export default {
   watch: {
     current(value) {
       this.axios
-        .get("/api/articles/archives", {
+        .get(this.GLOBAL.host+"/articles/archives", {
           params: { current: value }
         })
         .then(({ data }) => {

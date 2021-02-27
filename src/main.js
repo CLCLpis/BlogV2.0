@@ -19,7 +19,9 @@ import "highlight.js/styles/atom-one-dark.css";
 import VueImageSwipe from "vue-image-swipe";
 import "vue-image-swipe/dist/vue-image-swipe.css";
 import Toast from "./components/toast/index";
+import Global from './global/global'   //引用
 
+Vue.prototype.GLOBAL = Global;   //挂载原型，可g以使用this.GLOBAL拿到global.js的内容
 Vue.prototype.config = config;
 Vue.config.productionTip = false;
 Vue.use(animated);

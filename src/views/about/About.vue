@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     getAboutContent() {
-      this.axios.get("/api/getAbout").then(({ data }) => {
+      this.axios.get(this.GLOBAL.host+"/getAbout").then(({ data }) => {
         const MarkdownIt = require("markdown-it");
         const md = new MarkdownIt();
         this.aboutContent = md.render(data.data.data.content);

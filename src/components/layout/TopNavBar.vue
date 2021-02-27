@@ -126,7 +126,7 @@ export default {
       if (this.$route.path == "/user") {
         this.$router.go(-1);
       }
-      this.axios.get("/api/logout").then(({ data }) => {
+      this.axios.get(this.GLOBAL.host+"/logout").then(({ data }) => {
         if (data.success) {
           this.$store.commit("logout");
           this.$toast({ type: "success", message: data.message });

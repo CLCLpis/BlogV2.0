@@ -73,10 +73,10 @@ export default {
       };
       this.barrageList.push(message);
       this.messageContent = "";
-      this.axios.post("/api/message/messages", message);
+      this.axios.post(this.GLOBAL.host+"/message/messages", message);
     },
     listMessage() {
-      this.axios.get("/api/message/getMessageList").then(({ data }) => {
+      this.axios.get(this.GLOBAL.host+"/message/getMessageList").then(({ data }) => {
         if (data.success) {
           this.barrageList = data.data.data;
         }

@@ -88,7 +88,7 @@ export default {
           that.countDown();
         this.$toast({ type: "success", message: "已经请求发送短信，注意查收" });
           that.axios
-            .get("/api/user/sendEmailCode", {
+            .get(this.GLOBAL.host+"/user/sendEmailCode", {
               params: { email: that.email }
             })
             .then(({ data }) => {
@@ -137,7 +137,7 @@ export default {
         password: this.password,
         code: this.code
       };
-      this.axios.post("/api/user/registerUser", user).then(({ data }) => {
+      this.axios.post(this.GLOBAL.host+"/user/registerUser", user).then(({ data }) => {
         if (data.success) {
           this.$toast({ type: "success", message: data.message });
           this.username="";

@@ -104,7 +104,7 @@ export default {
             username:this.username,
             password:this.password
           };
-          that.axios.post("/api/login", param).then(({ data }) => {
+          that.axios.post(this.GLOBAL.host+"/login", param).then(({ data }) => {
             console.log(data);
             if (data.success) {
               that.username = "";
