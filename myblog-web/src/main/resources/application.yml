@@ -48,7 +48,7 @@ server:
     context-path: /blog
     session:
       cookie:
-        domain: localhost
+        domain: 127.0.0.1
 
 #邮箱配置
 alioss:

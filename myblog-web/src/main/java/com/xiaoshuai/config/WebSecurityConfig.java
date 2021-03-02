@@ -109,6 +109,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         corsConfiguration.addAllowedOrigin("http://localhost:8080");
         corsConfiguration.addAllowedOrigin("http://106.55.61.15");
         corsConfiguration.addAllowedOrigin("http://localhost");
+        corsConfiguration.addAllowedOrigin("http://127.0.0.1:8080");
+        corsConfiguration.addAllowedOrigin("http://127.0.0.1");
         // header，允许哪些header
         corsConfiguration.addAllowedHeader("*");
         //corsConfiguration.addExposedHeader("set-cookie");
