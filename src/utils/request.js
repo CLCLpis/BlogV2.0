@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const instance = Axios.create({
-  baseURL: 'https://web.bear0901.cn:32443/blog',
+  baseURL: '/api',
   timeout: 10000,
   withCredentials: true, // default
 });
