@@ -105,14 +105,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         // 同源配置，*表示任何请求都视为同源，若需指定ip和端口可以改为如“localhost：8080”，多个以“，”分隔；
-        corsConfiguration.addAllowedOrigin("http://106.55.61.15:8080");
+        corsConfiguration.addAllowedOrigin("https://106.55.61.15:8080");
         corsConfiguration.addAllowedOrigin("http://localhost:8080");
-        corsConfiguration.addAllowedOrigin("http://106.55.61.15");
+        corsConfiguration.addAllowedOrigin("https://106.55.61.15");
         corsConfiguration.addAllowedOrigin("http://localhost");
         corsConfiguration.addAllowedOrigin("http://127.0.0.1:8080");
         corsConfiguration.addAllowedOrigin("http://127.0.0.1");
-        corsConfiguration.addAllowedOrigin("http://www.bear0901.cn:8080");
-        corsConfiguration.addAllowedOrigin("http://www.bear0901.cn");
+        corsConfiguration.addAllowedOrigin("https://www.bear0901.cn:8080");
+        corsConfiguration.addAllowedOrigin("https://www.bear0901.cn");
         // header，允许哪些header
         corsConfiguration.addAllowedHeader("*");
         //corsConfiguration.addExposedHeader("set-cookie");

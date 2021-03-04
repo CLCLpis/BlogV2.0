@@ -46,9 +46,6 @@ server:
   port: 8090
   servlet:
     context-path: /blog
-    session:
-      cookie:
-        domain: bear0901.cn
 
 #邮箱配置
 alioss:
