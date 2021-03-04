@@ -17,7 +17,7 @@ public class ObsUploadUtil {
     /**
      * OBS图片访问域名
      */
-    private static String endPoint = "obs.cn-south-1.myhuaweicloud.com";
+    private static String endPoint = "https://obs.cn-south-1.myhuaweicloud.com";
     private static String accessKeyId = "67K8DPI3HUV4DSVDLOKL";
     private static String accessKeySecret = "gXHbjLY6mHQ5RiX6xpfRYFSEkdSWvxnpfbQ80Dn7";
     private static String bucketName = "pis-bear";
@@ -27,7 +27,9 @@ public class ObsUploadUtil {
     /**
      * 创建ObsClient实例
       */
-    private static ObsClient obsClient = new ObsClient(accessKeyId, accessKeySecret, endPoint);
+    private static ObsClient get(){
+        return new ObsClient(accessKeyId, accessKeySecret, endPoint);
+    }
 
     public static String obsUpload(MultipartFile file) throws IOException{
         //CommonsMultipartFile file = (CommonsMultipartFile)multipartFile;
@@ -42,11 +44,13 @@ public class ObsUploadUtil {
             String originalFilename = file.getOriginalFilename();
             fileName =  UUID.randomUUID().toString().replaceAll("-","") + originalFilename.subSequence(originalFilename.lastIndexOf("."), originalFilename.length());
             // 上传Object.
+            ObsClient obsClient = get();
             obsClient.putObject(bucketName,"admin/"+fileName,content,meta);
             if(!"".equals(fileName)){
                 log.error("fileName: {}", fileName);
                 fileName = oss_domain+"admin/"+fileName;
             }
+            obsClient.close();
         }
         return fileName;
     }
@@ -61,7 +65,9 @@ public class ObsUploadUtil {
         try {
             bucketUrl=bucketUrl.replace(oss_domain+"web","");
             // 删除Object.
+            ObsClient obsClient = get();
             obsClient.deleteObject(bucketName, bucketUrl);
+            obsClient.close();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
